@@ -1,0 +1,19 @@
+Almaty Trip v3.1 GitHub Pages 업로드
+====================================
+
+1. GitHub 저장소 kkt11167-cmd/almaty-trip 를 엽니다.
+2. 기존 파일을 백업한 뒤 v3.1 ZIP을 압축 해제합니다.
+3. ZIP 안의 파일/폴더를 저장소 루트에 업로드합니다.
+4. 특히 sw.js, app.js, data.js, index.html을 새 파일로 교체합니다.
+5. media 폴더와 icons 폴더도 같이 업로드합니다.
+6. Settings > Pages에서 Branch가 main / root인지 확인합니다.
+7. 배포 후 1~2분 기다립니다.
+8. 기존 PWA가 설치되어 있다면 삭제 후 사이트를 다시 열어 홈 화면에 재설치하는 것을 권장합니다.
+9. 브라우저에서 강력 새로고침하거나 시크릿 창으로 https://kkt11167-cmd.github.io/almaty-trip/ 를 확인합니다.
+
+사진
+----
+- 가장 안정적인 방식: media 폴더에 jpg/webp/png 파일을 넣고 data.js에서 상대경로 사용
+- 예: img: "media/kolsai.jpg"
+- 파일명은 영어/숫자/하이픈으로 권장
+- 너무 큰 원본은 1600~2400px 정도로 줄이면 모바일 로딩이 훨씬 편합니다.
