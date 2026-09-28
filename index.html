@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F6FD8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Almaty Trip">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.svg">
+<title>Almaty & Kazakhstan 6박 7일</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gaegu:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14233B; --sub:#5B6B82; --line:#E3E8EF; --bg:#F3F6FA; --card:#fff;
+  --sky:#1F6FD8; --c: #1F6FD8;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:#DCE4EE}
+body{font-family:'Pretendard Variable',Pretendard,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.app{max-width:440px;margin:0 auto;min-height:100vh;background:var(--bg);position:relative;padding-bottom:calc(84px + var(--safe-b));box-shadow:0 0 60px rgba(20,35,59,.12)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:300px;overflow:hidden;color:#fff}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,30,60,.15) 0%,rgba(10,30,60,0) 35%,rgba(10,25,50,.75) 100%)}
+.hero-in{position:absolute;left:20px;right:20px;bottom:22px;z-index:2}
+.hero .kick{font-size:13px;font-weight:600;opacity:.92;margin-bottom:4px}
+.hero h1{font-family:'Pacifico',cursive;font-weight:400;font-size:38px;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.hero .ttl2{font-family:'Black Han Sans',sans-serif;font-size:30px;color:#FFD43B;line-height:1.1;margin-top:2px;text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.hero .meta{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:99px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.28)}
+.dday{position:absolute;top:16px;right:16px;z-index:3;background:#FFD43B;color:#14233B;font-family:'Black Han Sans';font-size:20px;padding:8px 14px 6px;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.2);transform:rotate(3deg)}
+.dday small{display:block;font-family:'Pretendard Variable';font-size:10.5px;font-weight:700;letter-spacing:.02em;opacity:.7;margin-bottom:-1px}
+
+/* ---------- sections ---------- */
+.view{display:none;animation:fade .25s ease}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;padding:22px 20px 10px}
+.sec-h h2{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.sec-h span{font-size:12.5px;color:var(--sub);font-weight:500}
+
+/* ---------- day chips ---------- */
+.chips{position:sticky;top:0;z-index:20;background:rgba(243,246,250,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px 0 10px;border-bottom:1px solid var(--line)}
+.chips-row{display:flex;gap:8px;overflow-x:auto;padding:0 16px;scrollbar-width:none}
+.chips-row::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;width:62px;padding:8px 0 7px;border-radius:14px;background:#fff;border:1.5px solid var(--line);text-align:center;position:relative;transition:.2s}
+.chip b{display:block;font-family:'Black Han Sans';font-size:17px;font-weight:400;line-height:1;color:var(--cc)}
+.chip i{display:block;font-style:normal;font-size:11px;color:var(--sub);margin-top:4px;font-weight:600}
+.chip .bar{position:absolute;left:10px;right:10px;bottom:3px;height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.chip .bar::after{content:"";position:absolute;inset:0;width:var(--p,0%);background:var(--cc);border-radius:3px;transition:width .3s}
+.chip.on{background:var(--cc);border-color:var(--cc);box-shadow:0 6px 16px -6px var(--cc)}
+.chip.on b,.chip.on i{color:#fff}
+.chip.on .bar{background:rgba(255,255,255,.35)}.chip.on .bar::after{background:#fff}
+.chip.today::before{content:"TODAY";position:absolute;top:-7px;left:50%;transform:translateX(-50%);font-size:8.5px;font-weight:800;background:#FFD43B;color:#14233B;padding:1px 5px;border-radius:5px;letter-spacing:.04em}
+
+/* ---------- day header ---------- */
+.dayhead{margin:16px 16px 0;border-radius:22px;background:var(--c);color:#fff;padding:18px 18px 16px;position:relative;overflow:hidden}
+.dayhead::before{content:"";position:absolute;right:-30px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.1)}
+.dh-top{display:flex;align-items:center;gap:10px;position:relative}
+.dh-num{font-family:'Black Han Sans';font-size:30px;line-height:1}
+.dh-date{font-size:13px;font-weight:700;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:99px}
+.dh-tour{font-size:11.5px;font-weight:800;background:#fff;color:var(--c);padding:4px 9px;border-radius:99px;margin-left:auto}
+.dayhead h3{font-size:21px;font-weight:800;margin-top:10px;letter-spacing:-.03em;position:relative;text-wrap:balance}
+.dh-note{font-family:'Gaegu',cursive;font-size:18px;line-height:1.15;margin-top:8px;opacity:.95;white-space:pre-line;position:relative}
+.dh-prog{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:12px;font-weight:700;position:relative}
+.dh-prog .trk{flex:1;height:6px;border-radius:6px;background:rgba(255,255,255,.28);overflow:hidden}
+.dh-prog .trk div{height:100%;background:#fff;border-radius:6px;transition:width .35s}
+
+.photos{display:flex;gap:10px;overflow-x:auto;padding:12px 16px 2px;scrollbar-width:none}
+.photos::-webkit-scrollbar{display:none}
+.ph{flex:0 0 auto;position:relative;height:150px;border-radius:16px;overflow:hidden;background:#cfd8e3}
+.ph.one{width:100%}.ph.two{width:calc(50% - 5px)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph span{position:absolute;left:8px;bottom:8px;font-size:12px;font-weight:700;color:#fff;background:rgba(10,20,40,.5);backdrop-filter:blur(6px);padding:4px 9px;border-radius:8px}
+
+/* ---------- timeline ---------- */
+.tl{padding:14px 16px 4px;position:relative}
+.tl-hint{font-size:12px;color:var(--sub);padding:0 4px 10px;display:flex;align-items:center;gap:6px}
+.it{display:grid;grid-template-columns:62px 22px 1fr;align-items:stretch;width:100%;text-align:left;min-height:58px}
+.it .tm{font-size:13.5px;font-weight:800;padding-top:13px;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.it .tm.w{font-size:12px;font-weight:700;color:var(--c)}
+.it .rail{position:relative;display:flex;justify-content:center}
+.it .rail::before{content:"";position:absolute;top:0;bottom:0;width:2px;background:var(--line)}
+.it:first-of-type .rail::before{top:18px}
+.it:last-of-type .rail::before{bottom:calc(100% - 18px)}
+.it .dot{position:relative;margin-top:13px;width:16px;height:16px;border-radius:50%;background:#fff;border:2.5px solid var(--c);display:grid;place-items:center;transition:.2s}
+.it .dot svg{width:9px;height:9px;opacity:0;transition:.2s}
+.it .box{background:#fff;border-radius:14px;padding:10px 12px 10px 13px;margin:4px 0 4px 6px;border:1px solid var(--line);transition:.2s}
+.it .ti{font-size:15px;font-weight:700;letter-spacing:-.02em;line-height:1.35}
+.it .pl{font-size:12.5px;color:var(--sub);margin-top:2px;font-weight:500}
+.it .nt{display:inline-block;font-size:11.5px;font-weight:700;color:var(--c);background:color-mix(in oklab,var(--c) 10%,#fff);padding:2px 8px;border-radius:6px;margin-top:6px}
+.it .nt.warn{color:#B4540A;background:#FFF1DC}
+.it.done .dot{background:var(--c)}
+.it.done .dot svg{opacity:1}
+.it.done .box{background:transparent;border-style:dashed}
+.it.done .ti{color:var(--sub);text-decoration:line-through;text-decoration-color:color-mix(in oklab,var(--c) 60%,transparent);text-decoration-thickness:2px}
+.it.now .box{border-color:var(--c);box-shadow:0 6px 18px -8px var(--c)}
+.it.now .tm::after{content:"NOW";display:block;font-size:9px;font-weight:800;color:#fff;background:var(--c);width:max-content;padding:1px 5px;border-radius:4px;margin-top:3px}
+
+.daynav{display:flex;gap:10px;padding:16px}
+.daynav button{flex:1;height:50px;border-radius:14px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:6px}
+.daynav button:disabled{opacity:.35}
+.daynav .nx{background:var(--c);color:#fff;border-color:var(--c)}
+
+/* ---------- flights ---------- */
+.fgroup{padding:0 16px}
+.fgroup h4{font-size:13px;font-weight:800;color:var(--sub);margin:6px 4px 10px;letter-spacing:.02em}
+.bp{background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--line);position:relative}
+.bp-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--fc);color:#fff}
+.bp-top b{font-family:'Black Han Sans';font-weight:400;font-size:20px;letter-spacing:.02em}
+.bp-top span{font-size:12.5px;font-weight:700;opacity:.9}
+.bp-mid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px 16px 14px;gap:8px}
+.ap .code{font-family:'Black Han Sans';font-size:34px;line-height:1;color:var(--ink)}
+.ap .city{font-size:12.5px;color:var(--sub);font-weight:600;margin-top:3px}
+.ap .t{font-size:17px;font-weight:800;margin-top:8px;font-variant-numeric:tabular-nums}
+.ap .t sup{font-size:10px;color:#E0344C;font-weight:800;margin-left:2px}
+.ap.r{text-align:right}
+.bp-line{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--fc);min-width:80px}
+.bp-line .ln{width:100%;display:flex;align-items:center;gap:4px}
+.bp-line .ln i{flex:1;border-top:2px dashed currentColor;opacity:.5}
+.bp-line small{font-size:11.5px;font-weight:700;color:var(--sub)}
+.bp-foot{border-top:1.5px dashed var(--line);padding:9px 16px;font-size:12px;color:var(--sub);font-weight:600;position:relative}
+.bp-foot::before,.bp-foot::after{content:"";position:absolute;top:-9px;width:16px;height:16px;border-radius:50%;background:var(--bg)}
+.bp-foot::before{left:-9px}.bp-foot::after{right:-9px}
+.lay{display:flex;align-items:center;gap:10px;margin:8px 0;padding:10px 14px;border-radius:14px;background:#FFF6DB;border:1px dashed #F0C54A;font-size:13px;font-weight:700;color:#7A5A00}
+.lay b{margin-left:auto;font-family:'Black Han Sans';font-weight:400;font-size:16px;color:#B8860B}
+.bus{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.bus .ic{width:40px;height:40px;border-radius:12px;background:#EAF2FD;color:var(--sky);display:grid;place-items:center;flex:0 0 auto}
+.bus .tx{font-size:14px;font-weight:700}.bus .tx small{display:block;font-size:12px;color:var(--sub);font-weight:500;margin-top:2px}
+.bus .tm2{margin-left:auto;text-align:right;font-weight:800;font-size:15px}.bus .tm2 small{display:block;font-size:11px;color:var(--sub);font-weight:600}
+
+/* ---------- map ---------- */
+.mapcard{margin:0 16px;background:#fff;border-radius:22px;border:1px solid var(--line);overflow:hidden}
+.mapcard svg{display:block;width:100%;height:auto}
+.legend{padding:4px 16px 16px;display:grid;gap:6px}
+.lg{display:flex;align-items:center;gap:10px;font-size:13.5px;padding:8px 10px;border-radius:12px;text-align:left;width:100%;transition:.2s}
+.lg.on{background:color-mix(in oklab,var(--cc) 10%,#fff)}
+.lg b{width:26px;height:26px;border-radius:8px;background:var(--cc);color:#fff;display:grid;place-items:center;font-family:'Black Han Sans';font-weight:400;font-size:13px;flex:0 0 auto}
+.lg span{font-weight:700}.lg small{color:var(--sub);font-weight:500;font-size:12px;margin-left:auto}
+.maptip{font-family:'Gaegu';font-size:16px;color:var(--sub);padding:0 20px 4px}
+
+/* ---------- recos ---------- */
+.rgroup{margin:0 16px 14px;background:#fff;border-radius:20px;border:1px solid var(--line);overflow:hidden}
+.rgroup h4{display:flex;align-items:center;gap:8px;padding:13px 16px;font-size:15px;font-weight:800;color:#fff;background:var(--rc)}
+.rgroup h4 small{margin-left:auto;font-size:12px;font-weight:700;opacity:.85}
+.ri{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line)}
+.ri:first-of-type{border-top:0}
+.ri .av{width:40px;height:40px;border-radius:12px;background:color-mix(in oklab,var(--rc) 12%,#fff);color:var(--rc);display:grid;place-items:center;font-family:'Black Han Sans';font-size:17px;flex:0 0 auto}
+.ri .n{font-size:15px;font-weight:700}.ri .d{font-size:12.5px;color:var(--sub);margin-top:1px}
+.ri .tg{margin-left:auto;font-size:11px;font-weight:700;color:var(--rc);white-space:nowrap}
+.ri a{color:inherit;text-decoration:none}
+
+.cps{margin:0 16px;background:#FFFBEA;border:1px solid #F5E2A0;border-radius:20px;padding:6px 16px}
+.cp{display:flex;gap:10px;padding:11px 0;font-size:13.5px;line-height:1.5;border-top:1px dashed #EEDB9A}
+.cp:first-child{border-top:0}
+.cp b{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#FFD43B;display:grid;place-items:center;font-size:11.5px;font-weight:800;margin-top:1px}
+
+/* ---------- packing ---------- */
+.pk-sum{margin:0 16px 14px;background:var(--ink);color:#fff;border-radius:20px;padding:16px 18px;display:flex;align-items:center;gap:14px}
+.pk-sum .ring{width:56px;height:56px;flex:0 0 auto}
+.pk-sum b{font-size:17px;font-weight:800;display:block}.pk-sum small{font-size:12.5px;opacity:.75}
+.pk-sum button{margin-left:auto;font-size:12px;font-weight:700;opacity:.7;padding:8px}
+.pk{margin:0 16px 12px;background:#fff;border-radius:20px;border:1px solid var(--line);padding:4px 0}
+.pk h4{font-size:13px;font-weight:800;color:var(--sub);padding:12px 16px 6px;display:flex;justify-content:space-between}
+.pi{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:11px 16px;font-size:14.5px;font-weight:600;min-height:46px}
+.pi .cb{width:22px;height:22px;border-radius:7px;border:2px solid #C5CFDC;flex:0 0 auto;display:grid;place-items:center;transition:.15s}
+.pi .cb svg{width:12px;opacity:0}
+.pi.done .cb{background:#2E9A48;border-color:#2E9A48}.pi.done .cb svg{opacity:1}
+.pi.done span{color:var(--sub);text-decoration:line-through}
+.addrow{display:flex;gap:8px;padding:8px 16px 12px}
+.addrow input{flex:1;height:42px;border-radius:12px;border:1px solid var(--line);padding:0 12px;font:inherit;font-size:14px;background:var(--bg)}
+.addrow button{height:42px;padding:0 14px;border-radius:12px;background:var(--ink);color:#fff;font-weight:700;font-size:13px}
+.pi .x{margin-left:auto;color:#A0AEC0;font-size:18px;padding:0 4px}
+
+/* ---------- tabbar ---------- */
+.tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:6px 6px calc(8px + var(--safe-b))}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;font-size:11px;font-weight:700;color:#8A97AB;min-height:52px;border-radius:12px}
+.tab svg{width:23px;height:23px}
+.tab.on{color:var(--sky)}
+.foot{text-align:center;padding:28px 0 12px;font-family:'Pacifico';font-size:17px;color:#9AA8BC}
+.foot small{display:block;font-family:'Pretendard Variable';font-size:11px;margin-top:4px}
+
+/* ---------- PWA install ---------- */
+.install-btn{position:fixed;right:14px;top:calc(12px + env(safe-area-inset-top,0px));z-index:60;background:rgba(20,35,59,.88);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:8px 11px;font-size:11px;font-weight:800;box-shadow:0 6px 18px rgba(20,35,59,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:none}
+.install-btn.show{display:block}
+.pwa-toast{position:fixed;left:50%;bottom:calc(78px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;width:min(390px,calc(100% - 28px));background:#14233B;color:#fff;border-radius:18px;padding:13px 15px;box-shadow:0 12px 30px rgba(20,35,59,.28);font-size:13px;line-height:1.45;display:none}
+.pwa-toast.show{display:block}
+.pwa-toast b{display:block;font-size:14px;margin-bottom:3px}
+.pwa-toast button{float:right;color:#BFD8FF;font-weight:800;font-size:12px;padding:3px 0 0 10px}
+</style>
+</head>
+<body>
+<button class="install-btn" id="installBtn" type="button">＋ 홈 화면에 설치</button>
+<div class="pwa-toast" id="pwaToast"><button id="toastClose" type="button">닫기</button><b>홈 화면에 설치할 수 있어요</b><span id="toastText">브라우저 메뉴에서 “홈 화면에 추가”를 선택하세요.</span></div>
+<div class="app" id="app">
+  <header class="hero" data-screen-label="Hero">
+    <img src="img/bigalmaty.jpg" alt="빅알마티호수">
+    <div class="dday" id="dday"></div>
+    <div class="hero-in">
+      <div class="kick">대자연과 도시의 매력이 공존하는</div>
+      <h1>Almaty &amp; Kazakhstan</h1>
+      <div class="ttl2">6박 7일 여행 계획표</div>
+      <div class="meta">
+        <span class="pill">📅 2026.10.03 – 10.10</span>
+        <span class="pill">ICN → CIT → ALA</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="view on" id="v-plan" data-screen-label="일정"></section>
+  <section class="view" id="v-flight" data-screen-label="항공"></section>
+  <section class="view" id="v-map" data-screen-label="루트"></section>
+  <section class="view" id="v-reco" data-screen-label="추천"></section>
+  <section class="view" id="v-pack" data-screen-label="준비물"></section>
+
+  <div class="foot">Almaty → Shymkent → Seoul<small>See you again, Kazakhstan ♡</small></div>
+</div>
+
+<nav class="tabbar" id="tabbar"></nav>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+(function(){
+  const btn=document.getElementById('installBtn');
+  const toast=document.getElementById('pwaToast');
+  const text=document.getElementById('toastText');
+  const close=document.getElementById('toastClose');
+  let deferredPrompt=null;
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone=window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
+  function show(msg){ if(msg) text.textContent=msg; toast.classList.add('show'); }
+  close.addEventListener('click',()=>toast.classList.remove('show'));
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;btn.classList.add('show');});
+  btn.addEventListener('click',async()=>{
+    if(deferredPrompt){deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt=null; btn.classList.remove('show'); return;}
+    if(isIOS){ show('Safari 하단의 공유 버튼(□↑) → “홈 화면에 추가”를 선택하면 앱처럼 사용할 수 있어요.'); }
+    else { show('브라우저 메뉴(⋮) → “홈 화면에 추가” 또는 “앱 설치”를 선택하세요.'); }
+  });
+  window.addEventListener('appinstalled',()=>{btn.classList.remove('show');});
+  if(!isStandalone && !deferredPrompt && (isIOS || /android/i.test(navigator.userAgent))){setTimeout(()=>btn.classList.add('show'),1200);}
+  if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(console.error));}
+})();
+</script>
+<script>document.addEventListener("error",function(e){const t=e.target;if(t&&t.tagName==="IMG"&&t.dataset.fallback!="1"){t.dataset.fallback="1";t.removeAttribute("src");t.style.background="linear-gradient(135deg,#1769aa 0%,#5bc0d5 48%,#173c55 49%,#0b5a3c 100%)";t.style.objectFit="cover";t.alt=t.alt||"Almaty 풍경";}},true);</script>
+</body>
+</html>
