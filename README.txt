@@ -1,5 +1,1 @@
-Almaty Trip v4 — Travel App
-
-모바일 여행 플래너 + 여행 포스터형 홈 화면입니다.
-기능: 일정 추가/수정/삭제, 준비물 체크, 메모, 장소 추가, 백업/복원, 항공편, 여행지 카드, 지도 링크.
-GitHub Pages 업로드 시 루트의 파일을 그대로 올리고 media/ 폴더도 함께 업로드하세요.
+사진을 GitHub 저장소에 직접 넣으려면 이 폴더에 jpg/webp/png를 업로드하세요. 권장 파일명: cover-almaty.jpg, almaty-autumn.jpg, altyn-emel.jpg, kolsai.jpg, kaindy.jpg, charyn.jpg, moon-canyon.jpg, big-almaty-lake.jpg. 현재 v4는 검색한 Pexels 사진을 온라인 Hero/갤러리에 연결해 두었습니다. 오프라인 사용까지 원하면 사진 파일을 이 폴더에 넣고 app.js/data.js의 이미지 URL을 media/파일명으로 교체하세요.
