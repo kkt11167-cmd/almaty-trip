@@ -1,89 +1,12 @@
-const TRIP = {
-  title:"Almaty Trip",
-  dates:"2026.10.03 — 10.10",
-  flight:[
-    {flight:"DV468",from:"ICN",to:"CIT",depart:"10/03 05:45",arrive:"10/03 09:40",duration:"6h 55m"},
-    {flight:"DV707",from:"CIT",to:"ALA",depart:"10/03 13:40",arrive:"10/03 14:50",duration:"1h 10m",transfer:"췸켄트 경유 4시간"},
-    {flight:"DV708",from:"ALA",to:"CIT",depart:"10/09 11:30",arrive:"10/09 12:40",duration:"1h 10m"},
-    {flight:"DV467",from:"CIT",to:"ICN",depart:"10/09 18:30",arrive:"10/10 04:45",duration:"7h 15m",transfer:"췸켄트 경유 5시간 50분"}
-  ],
-  days:[
-    {date:"10/03",dow:"토",title:"알마티 도착 · 구시가지",tag:"DAY 1",items:[
-      ["01:35","삼성역 N6703","인천공항 T1 이동"],
-      ["02:50","인천공항 T1","체크인 · 면세품 수령"],
-      ["05:45","DV468","ICN → CIT / 6h 55m"],
-      ["09:40","췸켄트","4시간 경유"],
-      ["13:40","DV707","CIT → ALA / 1h 10m"],
-      ["14:50","알마티 T1","입국 → 체크인"],
-      ["17:00","판필로프 공원 → 젠코브 성당","도보 관광"],
-      ["18:30","그린 바자르","시간 여유 시"],
-      ["20:30","아르바트","저녁 후 산책"],
-      ["22:00","펍 / 바","Harat's · All Saints · BUL BAR"]
-    ]},
-    {date:"10/04",dow:"일",title:"메데우 · 쉼블락 · 콕토베",tag:"DAY 2",items:[
-      ["08:00","호텔 출발",""],
-      ["08:30","메데우","산악 풍경 · 산책"],
-      ["09:30","쉼블락 케이블카",""],
-      ["10:00","쉼블락","전망 · 산책 · 카페"],
-      ["14:00","점심",""],
-      ["15:00","알마티 복귀",""],
-      ["17:00","콕토베","노을 · 야경 / 일몰 약 18:08"],
-      ["21:00","칵테일 바","Queen of the Darkness · BUL BAR"]
-    ]},
-    {date:"10/05",dow:"월",title:"알틴에멜 · 바씨",tag:"DAY 3",items:[
-      ["이른 아침","알마티 출발","2박 3일 투어 시작"],
-      ["낮","알틴에멜","악타우 · 카투타우 · 싱잉듄"],
-      ["저녁","바씨 마을","숙박"]
-    ]},
-    {date:"10/06",dow:"화",title:"콜사이 · 카인디 · 차른 · 문 캐년",tag:"DAY 4",items:[
-      ["아침","콜사이 호수",""],
-      ["오전~낮","카인디 호수",""],
-      ["낮","차른 캐년","Valley of the Castles"],
-      ["낮","문 캐년",""],
-      ["낮~저녁","그 외 협곡·명소","투어사 최종 확정 필요"],
-      ["저녁","사티 마을","숙박"]
-    ]},
-    {date:"10/07",dow:"수",title:"추가 명소 · 알마티 복귀",tag:"DAY 5",items:[
-      ["낮","그 외 명소 탐방","투어사 최종 확정 필요"],
-      ["저녁","알마티 복귀","복귀 후 휴식"]
-    ]},
-    {date:"10/08",dow:"목",title:"빅알마티호수 · 쇼핑 · 마지막 밤",tag:"DAY 6",items:[
-      ["08:00","호텔 출발",""],
-      ["09:00","빅알마티호수","전망 · 산책 · 사진"],
-      ["12:30","점심",""],
-      ["14:00","Esentai / Dostyk","쇼핑"],
-      ["16:00","Arbat · Panfilov","카페 · 시내 산책"],
-      ["18:30","마지막 저녁","Darejani · Alasha 등"],
-      ["20:30","칵테일","BUL BAR · All Saints"],
-      ["22:30","클럽 선택","Barcode"]
-    ]},
-    {date:"10/09",dow:"금",title:"알마티 → 췸켄트 → 인천",tag:"DAY 7",items:[
-      ["07:00","기상 · 아침",""],
-      ["08:00","호텔 출발",""],
-      ["08:30","알마티 공항 T1","출국 준비"],
-      ["11:30","DV708","ALA → CIT / 1h 10m"],
-      ["12:40","췸켄트","5h 50m 경유"],
-      ["18:30","DV467","CIT → ICN / 7h 15m"],
-      ["10/10 04:45","인천공항","여행 종료"]
-    ]}
-  ],
-  places:[
-    {name:"Almaty",desc:"도시 · Arbat · Panfilov · Green Bazaar",emoji:"🏙️",img:"https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=900&q=80"},
-    {name:"Medeu · Shymbulak",desc:"산악 풍경 · 케이블카 · 전망",emoji:"🏔️",img:"https://images.unsplash.com/photo-1486911278844-a81c5267e227?auto=format&fit=crop&w=900&q=80"},
-    {name:"Altyn-Emel",desc:"Aktau · Katutau · Singing Dune",emoji:"🏜️",img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"},
-    {name:"Kolsai Lake",desc:"산악 호수 · 숲 · 트레킹",emoji:"🌲",img:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"},
-    {name:"Kaindy Lake",desc:"침수 숲 · 산악 호수",emoji:"🌲",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80"},
-    {name:"Charyn Canyon",desc:"Valley of the Castles",emoji:"🏜️",img:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80"},
-    {name:"Moon Canyon",desc:"10/6 투어 일정",emoji:"🌙",img:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"},
-    {name:"Big Almaty Lake",desc:"10/8 반일 자연 일정",emoji:"💧",img:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80"}
-  ],
-  bars:[
-    ["BUL BAR","🍸 Cocktail","10/3 · 10/4 · 10/8"],
-    ["All Saints","🍺 Bar","10/8 후보"],
-    ["Queen of the Darkness","🍸 Bar","10/4 후보"],
-    ["Harat's Pub","🍺 Pub","10/3 후보"],
-    ["Barcode","🕺 Club","10/8 선택"]
-  ],
-  route:["Almaty","Altyn-Emel","Basshy","Kolsai","Kaindy","Charyn Canyon","Moon Canyon","Saty","Almaty"],
-  packing:["여권","항공권","eSIM","여행자보험","투어 예약 확인","환전","보조배터리","충전기","바람막이","긴바지","운동화","선글라스","카메라","SD카드"]
-};
+window.TRIP={days:[
+{id:1,date:"10/03",dow:"토",color:"#1F6FD8",title:"알마티 도착 & 시내 구경",note:"첫날은 가볍게,\n알마티 분위기 적응!",photos:[["img/zenkov.jpg","젠코브 성당"]],items:[["01:35","삼성역 출발 → 인천공항 T1","N6703 버스","약 1시간 15분"],["05:45","인천 출발 → 췸켄트","DV468 · ICN → CIT","6h 55m"],["09:40","췸켄트 도착 · 경유","CIT","4시간 대기"],["13:40","췸켄트 출발 → 알마티","DV707 · CIT → ALA",""],["14:50","알마티 국제공항 도착","Almaty · T1","입국 → 호텔 체크인"],["16:00","숙소 이동 및 체크인","Almaty",""],["17:00","판필로프 공원 → 젠코브 성당","Panfilov Park",""],["18:30","그린 바자르","Green Bazaar","시간 여유 시"],["19:30","전통식 저녁 식사","Almaty",""],["20:30","아르바트 거리 산책","Arbat",""],["22:00","펍 / 바","Harat's Pub · All Saints · BUL BAR","가볍게"]]},
+{id:2,date:"10/04",dow:"일",color:"#EE7A12",title:"메데우 · 쉼블락 · 콕토베 노을",note:"노을은 17시 전후!\n멋진 풍경 놓치지 마세요",photos:[["img/medeu2.jpg","메데우"],["img/almatynight.jpg","콕토베 야경"]],items:[["08:00","호텔 출발","Almaty",""],["08:30","메데우","Medeu","스케이트장 · 산책"],["09:30","쉼블락 케이블카 탑승","Shymbulak",""],["10:00","쉼블락 관광","Shymbulak","전망 · 산책 · 카페"],["14:00","점심 식사","Shymbulak",""],["15:00","알마티 시내 복귀","Almaty",""],["16:30","콕토베 이동","Kok Tobe",""],["17:00","콕토베 전망 + 노을 + 야경","Kok Tobe","일몰 약 18:08"],["19:30","저녁 식사","Almaty",""],["21:00","칵테일 바","Queen of the Darkness · BUL BAR",""]]},
+{id:3,date:"10/05",dow:"월",color:"#2E9A48",title:"알틴에멜 국립공원",tour:"투어 1일차",note:"광활한 대자연을\n만끽하는 첫날!",photos:[["img/altyn2.jpg","알틴에멜"],["img/dune2.jpg","싱잉듄"]],items:[["이른 아침","알마티 출발","Almaty → Altyn-Emel","2박 3일 투어 시작"],["낮","알틴에멜 국립공원","Altyn-Emel","악타우 · 카투타우 · 싱잉듄"],["저녁","바씨 마을 이동 및 숙박","Basshy Village",""]]},
+{id:4,date:"10/06",dow:"화",color:"#E0344C",title:"콜사이 · 카인디 · 차른 캐년",tour:"투어 2일차",note:"호수와 협곡을\n하루에 다 만나는 날!",photos:[["img/kaindy.jpg","콜사이 호수"],["img/charyn.jpg","차른 캐년"]],items:[["아침","콜사이 호수","Kolsai Lake",""],["오전~낮","카인디 호수","Kaindy Lake",""],["낮","차른 캐년","Charyn Canyon",""],["낮","문 캐년","Moon Canyon",""],["낮~저녁","그 외 협곡 / 명소 탐방","투어 코스","투어사 확정 필요"],["저녁","사티 마을 이동 및 숙박","Saty Village",""]]},
+{id:5,date:"10/07",dow:"수",color:"#0E9488",title:"명소 탐방 & 알마티 복귀",tour:"투어 3일차",note:"투어 마지막 날,\n복귀 후엔 푹 쉬기",photos:[["img/kolsai.jpg","산악 호수 코스"]],items:[["낮","그 외 명소 탐방","투어 코스","투어사 확정 필요"],["저녁","알마티 복귀","Almaty","복귀 후 휴식"]]},
+{id:6,date:"10/08",dow:"목",color:"#7B3FC4",title:"빅알마티호수 + 쇼핑 + 마지막 밤",note:"마지막 밤까지\n알차게 즐기자!",photos:[["img/bigalmaty.jpg","빅알마티호수"]],items:[["08:00","호텔 출발","Almaty",""],["09:00","빅알마티호수","Big Almaty Lake","전망 · 산책 · 사진"],["12:30","점심 식사","Almaty",""],["14:00","쇼핑","Esentai Mall · Dostyk Plaza",""],["16:00","카페 & 시내 산책","Arbat · Panfilov",""],["18:30","마지막 저녁","Darejani · Alasha 등",""],["20:30","칵테일 바","BUL BAR · All Saints 등",""],["22:30","클럽 (선택)","Barcode Almaty","무리하지 않기"]]},
+{id:7,date:"10/09",dow:"금",color:"#1D4F91",title:"출국 · 인천으로",note:"See you again,\nKazakhstan ♡",photos:[],items:[["07:00","기상 및 아침 식사","Almaty",""],["08:00","호텔 출발","Almaty",""],["08:30","알마티 공항 도착","ALA T1","출국 준비"],["11:30","알마티 출발","DV708 · ALA → CIT",""],["12:40","췸켄트 도착 / 경유","CIT","5시간 50분 대기"],["18:30","췸켄트 출발","DV467 · CIT → ICN","7h 15m"],["+1 04:45","인천공항 도착 · 여행 종료","ICN · 10/10 (토)",""]]}],
+flights:[["DV468","10/03","ICN","인천","05:45","CIT","췸켄트","09:40","6h 55m"],["DV707","10/03","CIT","췸켄트","13:40","ALA","알마티","14:50","1h 10m"],["DV708","10/09","ALA","알마티","11:30","CIT","췸켄트","12:40","1h 10m"],["DV467","10/09","CIT","췸켄트","18:30","ICN","인천","04:45","+1 · 7h 15m"]],
+packing:[["서류 · 돈",["여권","항공권 e-티켓","숙소 · 투어 예약 확인서","해외결제 카드","텡게(KZT) 현금","여행자 보험"]],["전자기기",["휴대폰 충전기","보조배터리","멀티 어댑터","eSIM / 유심","카메라 · 메모리"]],["의류",["경량 패딩","바람막이","편한 트레킹화","모자 · 선글라스","잠옷 · 속옷","바 · 클럽용 옷"]],["생활 · 건강",["선크림","상비약","물티슈 · 휴지","립밤 · 보습제","텀블러 · 물병"]]],
+recos:[["맛집","#EE7A12",[["Darejani","조지아 음식","Day 6"],["Alasha","카자흐 · 우즈벡","Day 6"]]],["바 & 클럽","#7B3FC4",[["Harat's Pub","아이리시 펍","Day 1"],["BUL BAR","칵테일 바","Day 1 · 2 · 6"],["All Saints","칵테일 바","Day 1 · 6"],["Queen of the Darkness","칵테일 바","Day 2"],["Barcode Almaty","클럽","Day 6"]]],["쇼핑","#0E9488",[["Esentai Mall","고급 쇼핑몰","Day 6"],["Dostyk Plaza","대형 쇼핑몰","Day 6"],["Green Bazaar","현지 재래시장","Day 1"]]]],
+checks:["10/5~10/7 투어는 알틴에멜 → 콜사이/카인디 → 차른/문 캐년 및 기타 명소 → 알마티 복귀 구조.","10/6~10/7의 기타 협곡/명소는 투어사 최종 확정 후 업데이트.","10/9 귀국편은 췸켄트에서 5시간 50분 경유.","10/10 04:45 인천공항 도착 — 실제 여행 종료일은 10/10."]};
