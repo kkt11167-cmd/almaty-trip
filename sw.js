@@ -1,6 +1,5 @@
-'use strict';
-const CACHE='almaty-trip-v6-shell-20261002';
-const SHELL=['./','./index.html','./manifest.webmanifest','./icons/icon.svg'];
-self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL.map(x=>new Request(x,{cache:'reload'}))).catch(()=>{})).then(()=>self.skipWaiting()))});
-self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('almaty-trip-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
-self.addEventListener('fetch',event=>{const req=event.request;if(req.method!=='GET')return;const url=new URL(req.url);if(url.origin===self.location.origin){event.respondWith(caches.match(req).then(hit=>hit||fetch(req).then(res=>{if(res&&res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(req,copy))}return res}).catch(()=>caches.match('./index.html'))));return}if(req.destination==='image'&&url.hostname.endsWith('wikimedia.org')){event.respondWith(caches.match(req).then(hit=>hit||fetch(req).then(res=>{if(res&&(res.ok||res.type==='opaque')){const copy=res.clone();caches.open(CACHE).then(c=>c.put(req,copy))}return res}).catch(()=>Response.error())))} });
+const CACHE_NAME="almaty-trip-v7-route";
+const CORE=["./","./index.html","./app.js","./data.js","./manifest.webmanifest","./icons/icon-192.svg","./icons/icon-512.svg","./media/offline-cover-fallback.svg"];
+self.addEventListener("install",event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(CORE).catch(()=>{})));});
+self.addEventListener("activate",event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith("almaty-trip-")&&key!==CACHE_NAME).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
+self.addEventListener("fetch",event=>{const req=event.request;if(req.method!=="GET")return;const url=new URL(req.url);event.respondWith(fetch(req).then(response=>{if(response&&response.status===200&&(url.origin===self.location.origin||response.type==="opaque")){const copy=response.clone();caches.open(CACHE_NAME).then(cache=>cache.put(req,copy)).catch(()=>{});}return response;}).catch(()=>caches.match(req).then(hit=>hit||caches.match("./index.html"))));});
