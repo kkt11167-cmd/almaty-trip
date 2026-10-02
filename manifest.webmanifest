@@ -1,13 +1,13 @@
 {
-  "name": "Almaty Trip Planner",
+  "name": "Almaty Trip 2026",
   "short_name": "Almaty Trip",
-  "description": "알마티 6박 7일 여행 일정과 준비물 플래너",
-  "start_url": "./index.html",
+  "description": "알마티 여행 일정, 항공편, 지도, 준비물 관리",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#fffaf3",
-  "theme_color": "#ff6b35",
+  "background_color": "#F3F6FA",
+  "theme_color": "#1F6FD8",
   "icons": [
-    {"src":"./icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]
 }
