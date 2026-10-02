@@ -1,4 +1,4 @@
-const CACHE_NAME = 'almaty-trip-v9-packing-routes';
+const CACHE_NAME = 'almaty-trip-v10-one-route-map';
 const BASE = self.location.pathname.replace(/sw\.js$/, '');
 const CORE = [BASE, BASE+'index.html', BASE+'app.js', BASE+'data.js', BASE+'manifest.webmanifest', BASE+'icon.svg'];
 self.addEventListener('install', event => {
